@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Khalaf | Creative Portfolio</title>
+    <style>
+        /* --- Root Theme Variables & Resets --- */
+        :root {
+            --bg-dark: #0a051b;
+            --panel-bg: #130b32;
+            --neon-pink: #ff2a74;
+            --neon-cyan: #00f0ff;
+            --neon-purple: #9437ff;
+            --text-light: #f0edff;
+            --text-muted: #a197c4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        body {
+            overflow-x: hidden;
+            padding-top: 70px; /* Offset for fixed navbar */
+        }
+
+        /* --- 1. Fixed Navbar Section --- */
+        /* Requirement: Fixed HTML & CSS navbar with Home, About, Home (Duplicate requested), and How To Create a Fixed Menu */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background-color: var(--panel-bg); /* Background color assigned */
+            border-bottom: 2px solid var(--neon-pink);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            z-index: 9999;
+            box-shadow: 0 0 15px rgba(255, 42, 116, 0.3);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-light); /* Font color assigned */
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+
+        /* Hover effect added */
+        .nav-links a:hover {
+            color: var(--bg-dark);
+            background-color: var(--neon-cyan);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* --- Container Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            text-transform: uppercase;
+        }
+
+        /* --- 2. Hero Video Header with Text Overlay --- */
+        /* Requirement: Embed video that autoplays on mute on a loop, with text overlay */
+        .hero-video-container {
+            position: relative;
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            border-bottom: 3px solid var(--neon-purple);
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(10, 5, 27, 0.4), var(--bg-dark));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .video-overlay h1 {
+            font-size: 4rem;
+            color: var(--neon-pink);
+            text-shadow: 0 0 20px var(--neon-pink);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .video-overlay p {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        /* --- 3. Image Actions & Layout --- */
+        /* Requirement: Center image, apply CSS filter, and give rounded edges */
+        .image-profile-box {
+            display: flex;
+            justify-content: center; /* Centered the image wrapper */
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 50%; /* Rounded edges */
+            border: 4px solid var(--neon-purple);
+            filter: hue-rotate(45deg) saturate(130%) contrast(110%); /* CSS Filter Applied */
+            box-shadow: 0 0 25px var(--neon-purple);
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- 4. Paragraph Hover Effect Section --- */
+        /* Requirement: Paragraph element with hover effect */
+        .interactive-p {
+            max-width: 700px;
+            margin: 20px auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* CSS hover effect for <p> element */
+        .interactive-p:hover {
+            color: var(--text-light);
+            background-color: rgba(148, 55, 255, 0.15);
+            box-shadow: inset 0 0 10px rgba(148, 55, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* --- 5. Two-Column Layout --- */
+        /* Requirement: HTML Two-column layout with specific styling (font color, height, width) */
+        .two-column-wrapper {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .column {
+            width: 45%; /* Specified width */
+            height: 320px; /* Specified height */
+            background-color: var(--panel-bg);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 6px 20px rgba(0, 240, 255, 0.1);
+        }
+
+        .column h3 {
+            color: var(--neon-cyan);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .column p {
+            color: #b9f3ff; /* Assigned explicit font color inside columns */
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* --- 6. Static Image Text Overlay & Hover Image Fade --- */
+        /* Requirements: Place text over an image AND create an image overlay fade */
+        .showcase-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .image-card {
+            position: relative;
+            width: 450px;
+            height: 300px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--neon-purple);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Card A Layout: Static Text Over Image */
+        .static-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 5, 27, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .static-overlay h3 {
+            color: var(--text-light);
+            font-size: 1.8rem;
+            background-color: rgba(255, 2a, 116, 0.8);
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
+
+        /* Card B Layout: Image Overlay Fade on Hover */
+        .fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--neon-cyan);
+            opacity: 0; /* Initial state hidden for fade */
+            transition: opacity 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .fade-overlay h3 {
+            color: var(--bg-dark);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .fade-overlay p {
+            color: var(--bg-dark);
+            font-weight: 600;
+        }
+
+        /* Overlay fade triggers on container hover */
+        .image-card:hover .fade-overlay {
+            opacity: 0.95; 
+        }
+
+        /* --- 7. Table Section Styling --- */
+        /* Requirement: Table with border, cell padding, and top row background color */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+            background-color: var(--panel-bg);
+            border: 2px solid var(--neon-pink); /* Created a border */
+        }
+
+        .custom-table th, .custom-table td {
+            border: 1px solid rgba(255, 42, 116, 0.3); /* Created internal borders */
+            padding: 15px 20px; /* Added padding in cells */
+            text-align: left;
+        }
+
+        .custom-table tr:first-child {
+            background-color: var(--neon-pink); /* Background color in top row */
+        }
+
+        .custom-table th {
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .custom-table td {
+            color: var(--text-light);
+        }
+
+        .custom-table tr:nth-child(even):not(:first-child) {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+
+        /* --- 8. Footer Section Styling --- */
+        /* Requirement: Centered and Bold text inside footer */
+        footer {
+            background-color: var(--panel-bg);
+            border-top: 2px solid var(--neon-cyan);
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            text-align: center; /* Centered text */
+            font-weight: bold; /* Bold text */
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+        
+        footer p span {
+            color: var(--neon-cyan);
+        }
+
+        /* Responsive breakpoints */
+        @media (max-width: 768px) {
+            .navbar { padding: 0 20px; }
+            .nav-links { gap: 15px; }
+            .column { width: 100%; height: auto; }
+            .video-overlay h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-logo">MK.DEV</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#">Home</a></li> <li><a href="#fixed-menu-guide">How To Create a Fixed Menu</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero-video-container">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054ba2d10c2c9d617da96df6db92bc5&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay">
+            <h1>Marwan Khalaf</h1>
+            <p>Digital Creator & Student Developer</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="image-profile-box">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=500&auto=format&fit=crop&q=80" alt="Marwan Khalaf Profile Image" class="profile-img">
+            </div>
+            
+            <p class="interactive-p">
+                Hello! I am Marwan Khalaf, an ambitious student driven by designing unique interactive modern web spaces. I enjoy taking standard functional designs and morphing them with creative art filters and structural styling rules. Hover over this block element to witness a smooth neon-highlight transformation matrix instantly!
+            </p>
+        </section>
+
+        <section id="fixed-menu-guide">
+            <h2 class="section-title">Development Framework</h2>
+            <div class="two-column-wrapper">
+                <div class="column">
+                    <h3>Column One: Structural Architecture</h3>
+                    <p>Building standard components forms the functional core of modern responsive platforms. By assigning explicitly defined values for grid element constraints, responsive design components stay strictly proportional. This explicit container size guarantees multi-device structural integrity seamlessly.</p>
+                </div>
+                <div class="column">
+                    <h3>Column Two: Style Mechanics</h3>
+                    <p>How do you configure a fixed navigation framework? By configuring properties to absolute view targets, elements freeze in their relative screen paths during scroll execution actions. This ensures instant global utility interactions irrespective of scroll depth offsets.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="showcase">
+            <h2 class="section-title">Interactive Overlays</h2>
+            <div class="showcase-grid">
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=80" alt="Cyberpunk Setup" class="card-img">
+                    <div class="static-overlay">
+                        <h3>Static Overlay Text</h3>
+                    </div>
+                </div>
+
+                <div class="image-card">
+                    <img src="https://images.unsplash.com/photo-1563089145-599997674d42?w=600&auto=format&fit=crop&q=80" alt="Abstract Lights" class="card-img">
+                    <div class="fade-overlay">
+                        <h3>Dynamic Fade Reveal</h3>
+                        <p>This overlay component smooths into view via clean opacity value transitions.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metrics">
+            <h2 class="section-title">Academic Schedule & Progress</h2>
+            <div class="table-container">
+                <table class="custom-table">
+                    <tr>
+                        <th>Core Track Topic</th>
+                        <th>Status Metrics</th>
+                        <th>Language Base</th>
+                    </tr>
+                    <tr>
+                        <td>Fixed Position Interface Engine</td>
+                        <td>Successfully Compiled</td>
+                        <td>HTML5 / CSS3 Grid Architecture</td>
+                    </tr>
+                    <tr>
+                        <td>Graphic Element Filters & Rounded Edge Masking</td>
+                        <td>Successfully Compiled</td>
+                        <td>CSS3 Rendering Core</td>
+                    </tr>
+                    <tr>
+                        <td>Autoplay Loops & Media Text Placement Layers</td>
+                        <td>Successfully Compiled</td>
+                        <td>HTML5 Audio/Video Stream Engine</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Designed and Programmed by <span>Marwan Khalaf</span> &copy; 2026. Custom Engineering Stack Execution Complete.</p>
+    </footer>
+
+</body>
+</html>
